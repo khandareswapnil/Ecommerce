@@ -1,35 +1,33 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
+import LeftOptDashboard from "./AdminPanel/LeftOptDashboard";
 
+function DashBoard() {
+  return (
+    <div className="grid-rows-2 h-screen space-y-9">
+      {/* Header Section */}
+      <div className="border-4 border-light-blue-500 h-20">
+        <div className="overflow-hidden w-full bg-gray-200 h-12 relative">
+          <div className="animate-move-right-left whitespace-nowrap absolute top-0 left-0 text-lg font-bold text-blue-600">
+            Your Name Traveling Right to Left and Back
+          </div>
+        </div>
+      </div>
 
-const Dashboard=()=>
-    {
-        return (
-            <>
-           <div className="h-screen">
-           <div className="grid grid-rows-1 border-solid border-2 border-indigo-600 p-2 h-16 translate-y-2	">
-                <div className=" grid grid-cols-1 ">
-                    <h1 className="text-center font-medium text-2xl">Welocome to Ecommerce.</h1>
-                </div>
-                </div>
-                
+      {/* Main Content Bar */}
+      <div className="h-5/6 flex">
+        {/* Left Navigation Bar */}
+        <div className="w-1/4 border-4 border-light-blue-500 bg-blue-400">
+          <LeftOptDashboard />
+        </div>
 
-                <div className="flex mt-5 w-screen text-center h-5/6 translate-y-8">
-                    <div className="border-solid border-2 border-indigo-600  w-1/4 text-xl text-yellow-500 font-medium bg-indigo-500">                      
-                     <ul >
-                            <li className="border-2 border-indigo-600 p-4"><Link to="/addproducttohome">Add Product On Home Page</Link></li>
-                            <li className="border-2 border-indigo-600 p-4"><Link to="/addproducttomain">Add Product on Main Page</Link></li>
-                            <li className="border-2 border-indigo-600 p-4"><Link to="/viewuser">View All User</Link></li>
-                            
-                            <li></li>
-                        </ul>
-                    </div>
-                    <div className=" border-solid border-2 border-indigo-600 w-3/4	">2</div>
-                </div>
-           </div>
-                        
-            </>
-        )
+        {/* Right Content Section */}
+        <div className="w-3/4 border-4 border-light-blue-500">
+          <Outlet />
+        </div>
+      </div>
+    </div>
+  );
+}
 
-    }
-    export default Dashboard;
+export default DashBoard;
